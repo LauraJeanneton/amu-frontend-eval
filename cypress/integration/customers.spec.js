@@ -5,7 +5,7 @@ import { API_URL, API_KEY, BASE_URL, resetDatabase } from "../utils";
 // Les fonctionnalités attendues pour les clients (customers)
 describe("Customers Features", () => {
   // Avant chaque test, je supprime tout ce qui se trouve dans la base de données distante via une requête HTTP
-  beforeEach(() => resetDatabase());
+  //beforeEach(() => resetDatabase());
 
   // Testons le scénario de création d'un client
   // Il permet non seulement de tester qu'on peut créer un client mais

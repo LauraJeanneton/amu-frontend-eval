@@ -21,6 +21,6 @@
   "homepage": "https://github.com/liorchamla/amu-frontend-eval#readme",
   "devDependencies": {
     "@types/cypress": "^1.1.3",
-    "cypress": "^9.2.0"
+    "cypress": "^9.3.1"
   }
 }
