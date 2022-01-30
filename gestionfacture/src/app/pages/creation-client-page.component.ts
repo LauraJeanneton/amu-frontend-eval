@@ -2,7 +2,8 @@ import { Component, Output, EventEmitter } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { TasksService } from "../api/tasks.service";
 import { Facture, Factures } from "../types/facture";
-import { Client } from "../types/task";
+import { Client,Clients } from "../types/task";
+import {Router} from '@angular/router';
 import { FormControl, FormGroup } from "@angular/forms";
 
 @Component({
@@ -17,9 +18,9 @@ import { FormControl, FormGroup } from "@angular/forms";
 })
 export class CreactionClientPageComponent {
     task?: Client;
-    factures:Factures=[];
+    clients:Clients=[];
 
-    constructor(private route: ActivatedRoute, private service: TasksService) { }
+    constructor(private route: ActivatedRoute, private service: TasksService, private router :Router ) { }
 
     @Output()
     onNewTask = new EventEmitter<Client>();
@@ -38,9 +39,10 @@ export class CreactionClientPageComponent {
     }
 
     addTask(client: Client) {
-        console.log("Add client : " + client.fullName+" et "+client.email);
         this.service
           .create(client.fullName,client.email)
-          .subscribe((tasks) => this.factures.push(this.factures[0]));
+          .subscribe((clients) => {this.clients.push(client);
+            this.router.navigate(["/"]);});
+          
       }
  }

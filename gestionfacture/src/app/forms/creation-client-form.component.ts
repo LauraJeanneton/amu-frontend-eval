@@ -69,7 +69,7 @@ export class CreationClientFormComponent {
             fullName: '',
             email:""
         });
-        this.router.navigate(["/"]);
+        
     }
     
 }

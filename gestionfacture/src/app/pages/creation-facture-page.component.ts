@@ -4,6 +4,7 @@ import { TasksService } from "../api/tasks.service";
 import { Facture, Factures } from "../types/facture";
 import { Client } from "../types/task";
 import { FormControl, FormGroup } from "@angular/forms";
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-creation-facture-page',
@@ -26,7 +27,7 @@ export class CreactionFacturePageComponent {
     task?: Client;
     factures:Factures=[];
 
-    constructor(private route: ActivatedRoute, private service: TasksService) { }
+    constructor(private route: ActivatedRoute, private service: TasksService,private router : Router) { }
 
     @Output()
     onNewTask = new EventEmitter<Facture>();
@@ -45,9 +46,12 @@ export class CreactionFacturePageComponent {
     }
 
     addTask(facture: Facture) {
-        console.log("Add task : " + this.id+" " +facture.amount+" et "+facture.status)
         this.service
           .createFacture(this.id,facture.amount,facture.status)
-          .subscribe((tasks) => this.factures.push(this.factures[0]));
+          .subscribe((factures) => {
+              this.factures.push(facture);
+              this.router.navigate(["/"+this.id]);
+            });
+           
       }
  }

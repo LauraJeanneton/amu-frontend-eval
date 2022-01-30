@@ -53,21 +53,20 @@ export class CreationFactureFormComponent {
         text: new FormControl(),
         status: new FormControl()
     });
-     truc: Facture = {
+     facture: Facture = {
         idClient: this.id,
         amount:"",
         status:""
       };
     onSubmit() {
-        this.truc.amount=this.form.value.text;
-        this.truc.status=this.form.value.status;
+        this.facture.amount=this.form.value.text;
+        this.facture.status=this.form.value.status;
        
-        console.log(this.form.value)
         // Au moment de la soumission, on va déclencher un événement
         // Et la donnée que l'on va émettre sera la valeur du champ 
         // "text" qui se trouve dans notre formulaire !
         
-    this.onNewTask.emit(this.truc);
+    this.onNewTask.emit(this.facture);
 
         // On pourra même réinitialiser la valeur du formulaire
         // une fois que le traitement sera terminé :
@@ -75,7 +74,7 @@ export class CreationFactureFormComponent {
             text: '',
             status:""
         });
-        this.router.navigate(["/"+this.id]);
+        
     }
     
 }
