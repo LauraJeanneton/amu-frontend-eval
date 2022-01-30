@@ -11,21 +11,25 @@ import { Client } from "../types/task";
     <ng-container *ngIf="task">
         <h1>Fiche de {{task.fullName}}</h1>
         
+       
         <strong>Contact : </strong>
         {{task.email}}
         <br />
        
         <a id="retour" routerLink="/">Retour aux clients</a>
        
-        <div id="factures">
+        <div>
             <ng-container *ngIf="facture" >
-            <table>
-            <tr> <th>Nom</th>
-            <th>Âge</th></tr>
-                <div *ngFor="let fact of facture">
-                <tr><td>{{fact.amount}}</td>
-                <td> {{fact.status}}</td></tr>
-                </div>
+            <table style="width:100%">
+            <tr>
+            <th *ngFor = "let column of headers">
+            {{column}}
+          </th>
+            </tr>
+           <tr *ngFor="let fact of facture">
+                <td> {{fact.amount}}</td>
+                <td> {{getStatus(fact.status)}} </td>
+           </tr>
                 </table>
             </ng-container>
 
@@ -39,9 +43,20 @@ import { Client } from "../types/task";
 export class ClientDetailsPageComponent {
     task?: Client;
     facture?:Facture[];
+    headers = ["Montant", "Statut"];
 
     constructor(private route: ActivatedRoute, private service: TasksService) { }
 
+    getStatus(status:string){
+        let statut = "";
+        if(status=="PAID"){
+            statut="Payé"
+        }
+        if(status=="SENT"){
+            statut="Envoyé"
+        }
+        return statut;
+    }
     ngOnInit() {
         const id: number = Number(this.route.snapshot.paramMap.get('id'));
 
