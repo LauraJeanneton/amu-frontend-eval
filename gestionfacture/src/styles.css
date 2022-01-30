@@ -9,13 +9,38 @@
     margin: 0;
     padding: 0;
   }
-  table {
+  
+
+  .list {
     border-collapse: collapse;
-    border: 1px solid black;
-  }
-  table, th, td {
-    border: 1px solid black;
-  }
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+ .list thead tr {
+  background-color: rgb(202, 152, 152);
+  color: #000000;
+  text-align: left;
+}
+.list th,
+.list td {
+    padding: 12px 15px;
+}
+
+.list tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.list tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+
+
+
   
   app-root {
     display: flex;

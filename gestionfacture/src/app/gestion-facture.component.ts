@@ -13,15 +13,22 @@ import { Clients } from './types/task';
         
     <a id="retour" routerLink="/create">Créer un client</a>
 
-    <ul>
-          <li *ngFor="let item of tasks">
-          <label id="item-{{ item.id }}" routerLink="/{{ item.id }}">
+    <table style="width:100%" class="list">
+    <thead>
+    <tr><th>Nom Prenom</th><th>Email</th></tr>
+    </thead><tbody>
+          <tr *ngFor="let item of tasks">
+          <td id="item-{{ item.id }}" routerLink="/{{ item.id }}">
             
             {{ item.fullName }} 
-          </label>
+          </td>
+          <td id="item-{{ item.id }}" routerLink="/{{ item.id }}">
+            
+            {{ item.email }} 
+          </td>
           
-    </li>
-</ul>
+    </tr> </tbody>
+</table>
     `
 })
 

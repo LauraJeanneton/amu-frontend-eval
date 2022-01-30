@@ -20,16 +20,16 @@ import { Client } from "../types/task";
        
         <div>
             <ng-container *ngIf="facture" >
-            <table style="width:100%">
-            <tr>
+            <table style="width:100%" class="list">
+            <thead> <tr>
             <th *ngFor = "let column of headers">
             {{column}}
           </th>
-            </tr>
+            </tr></thead><tbody>
            <tr *ngFor="let fact of facture">
                 <td> {{fact.amount}}</td>
-                <td> {{getStatus(fact.status)}} </td>
-           </tr>
+                <td> {{getStatus(fact.status)}}</td>
+           </tr><tbody>
                 </table>
             </ng-container>
 
@@ -44,11 +44,10 @@ export class ClientDetailsPageComponent {
     task?: Client;
     facture?:Facture[];
     headers = ["Montant", "Statut"];
-
     constructor(private route: ActivatedRoute, private service: TasksService) { }
-
+     SENT_OPTION : any = "SENT";
     getStatus(status:string){
-        let statut = "";
+        let statut = "Payé";
         if(status=="PAID"){
             statut="Payé"
         }
@@ -69,4 +68,5 @@ export class ClientDetailsPageComponent {
             .subscribe(facture => this.facture = facture);
             
     }
+
  }
