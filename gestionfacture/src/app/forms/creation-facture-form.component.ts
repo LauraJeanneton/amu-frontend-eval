@@ -21,7 +21,8 @@ import { TasksService } from "../api/tasks.service";
             placeholder="Montant" 
         />
         <br/><br/>
- <label>Statut : </label><select name="status" id="status" formControlName="status" [(ngModel)]="SENT_OPTION">
+ <label>Statut : </label>
+ <select name="status" id="status" formControlName="status" [(ngModel)]="SENT_OPTION">
  <option value="SENT" >Envoyé</option>
  <option value="PAID">Payé</option>
 </select>
